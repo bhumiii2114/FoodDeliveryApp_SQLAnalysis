@@ -45,7 +45,13 @@ LIMIT 5;
 Analyzes the distribution of order times and returns the top 5 hours with the highest order volumes.
 
 ```sql
--- Uses EXTRACT(HOUR) to identify popular order hours
+SELECT 
+    EXTRACT(HOUR FROM order_time::time) AS hour_of_day,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY hour_of_day
+ORDER BY total_orders DESC
+limit 5;
 ```
 
 ---
@@ -55,7 +61,15 @@ Analyzes the distribution of order times and returns the top 5 hours with the hi
 Identifies the top 10 customers based on the total number of orders placed.
 
 ```sql
--- GROUP BY customer to count total orders
+SELECT 
+    c.customer_id, 
+    c.customer_name, 
+    COUNT(o.order_id) AS total_orders
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, c.customer_name
+ORDER BY total_orders DESC
+LIMIT 10;
 ```
 
 ---
