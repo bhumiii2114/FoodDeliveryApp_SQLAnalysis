@@ -1,0 +1,61 @@
+restaurant_id,restaurant_name,city,opening_hours
+1,The Bombay Canteen,Mumbai,10:00 AM - 11:00 PM
+2,Leopold Cafe,Mumbai,9:00 AM - 12:00 AM
+3,Bademiya,Mumbai,6:00 PM - 3:00 AM
+4,Ziya,Mumbai,12:00 PM - 11:00 PM
+5,Gajalee,Mumbai,11:00 AM - 11:00 PM
+6,Masala Library,Mumbai,12:00 PM - 8:00 PM
+7,Mahesh Lunch Home,Mumbai,11:30 AM - 11:45 PM
+8,Yauatcha,Mumbai,12:00 PM - 12:00 AM
+9,Britannia Co.,Mumbai,12:00 PM - 4:00 PM
+10,Indigo,Mumbai,12:00 PM - 9:30 PM
+11,Indian Accent,Delhi,12:00 PM - 2:30 PM
+12,Karim's,Delhi,9:00 AM - 12:00 AM
+13,Bukhara,Delhi,12:30 PM - 11:45 PM
+14,Moti Mahal,Delhi,12:00 PM - 11:30 PM
+15,SodaBottleOpenerWala,Delhi,11:00 AM - 11:30 PM
+16,Gulati,Delhi,11:30 AM - 11:30 PM
+17,Saravana Bhavan,Delhi,8:00 AM - 10:00 PM
+18,The Big Chill,Delhi,11:00 AM - 11:00 PM
+19,Farzi Cafe,Delhi,12:00 PM - 11:45 PM
+20,Lodi - The Garden Restaurant,Delhi,12:00 PM - 11:00 PM
+21,Chawla's,Delhi,10:00 AM - 10:00 PM
+22,Urban Bhukkad,Mumbai,12:00 PM - 11:00 PM
+23,RestoCafe,Delhi,12:00 PM - 11:00 PM
+24,Ignodus,Mumbai,10:00 AM - 10:00 PM
+25,Ignodus,Delhi,12:00 PM - 11:00 PM
+26,Chicken Shiken,Mumbai,12:00 PM - 11:00 PM
+27,FishFry,Delhi,10:00 AM - 10:00 PM
+28,Punjabi Mail,Mumbai,12:00 PM - 11:00 PM
+29,Cafe 49,Delhi,12:00 PM - 11:00 PM
+30,Manju Maggie,Mumbai,10:00 AM - 10:00 PM
+31,Tea Party,Delhi,12:00 PM - 11:00 PM
+32,Cat Cafe,Mumbai,12:00 PM - 11:00 PM
+33,Big Dinin,Delhi,10:00 AM - 10:00 PM
+34,Soiree,Mumbai,12:00 PM - 11:00 PM
+35,Veerji Chaamp,Delhi,12:00 PM - 11:00 PM
+36,Naturals,Mumbai,10:00 AM - 10:00 PM
+37,Basant,Delhi,12:00 PM - 11:00 PM
+38,Savouriee,Mumbai,12:00 PM - 11:00 PM
+39,Bliss Worth,Delhi,10:00 AM - 10:00 PM
+40,Coffee Cart,Mumbai,12:00 PM - 11:00 PM
+41,Burger Shurger,Delhi,12:00 PM - 11:00 PM
+42,Bellrocc,Mumbai,10:00 AM - 10:00 PM
+43,Rooftop Hitch,Delhi,12:00 PM - 11:00 PM
+44,Romatini,Mumbai,12:00 PM - 11:00 PM
+45,Nagpal's Fine Dine,Delhi,10:00 AM - 10:00 PM
+46,Pink Rossa,Mumbai,12:00 PM - 11:00 PM
+47,Amilio Ess,Delhi,12:00 PM - 11:00 PM
+48,Bellarose,Mumbai,10:00 AM - 10:00 PM
+49,Farissaa,Delhi,12:00 PM - 11:00 PM
+50,Elevate,Mumbai,12:00 PM - 11:00 PM
+51,Dominick,Delhi,10:00 AM - 10:00 PM
+52,Vatsa Food Factory,Mumbai,12:00 PM - 11:00 PM
+53,Yellow Door,Delhi,12:00 PM - 11:00 PM
+54,Door No 3,Mumbai,10:00 AM - 10:00 PM
+55,Elgin,Delhi,12:00 PM - 11:00 PM
+56,Mocha Cafe,Mumbai,12:00 PM - 11:00 PM
+57,Cafe Helados,Delhi,10:00 AM - 10:00 PM
+58,Jaggi's,Mumbai,12:00 PM - 11:00 PM
+59,Kohli's,Delhi,12:00 PM - 11:00 PM
+60,Olio,Mumbai,10:00 AM - 10:00 PM
