@@ -146,16 +146,6 @@ Identifies customers who placed orders in 2023 and 2024 but did **not** place an
 
 ## 🛠️ Requirements
 
-* SQL (PostgreSQL syntax preferred)
+* SQL (PostgreSQL syntax used)
 * Tables involved: `orders`, `customers`, `deliveries`, `riders`, `restraunts`
 
----
-
-## 📌 Notes
-
-* You can replace hardcoded values like `'Paul Vaughan'` with dynamic inputs or parameters.
-* Ensure data types (especially `total_amount`, `order_time`) are appropriately cast if needed.
-
----
-
-Let me know if you want a version in Markdown or `.md` file format.
