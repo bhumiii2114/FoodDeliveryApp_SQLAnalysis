@@ -79,7 +79,15 @@ LIMIT 10;
 Displays the top 3 customers who have spent the most, based on the total order amount.
 
 ```sql
--- SUM total_amount per customer
+SELECT 
+    o.customer_id,
+    c.customer_name,
+    SUM(o.total_amount) AS total_spent
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+GROUP BY o.customer_id, c.customer_name
+ORDER BY total_spent DESC
+LIMIT 3;
 ```
 
 ---
@@ -89,7 +97,14 @@ Displays the top 3 customers who have spent the most, based on the total order a
 Calculates the delivery success percentage for each rider.
 
 ```sql
--- Ratio of 'delivered' statuses over total deliveries per rider
+SELECT 
+    rider_id,
+    COUNT(CASE WHEN 
+	delivery_status = 'delivered' THEN 1 END)::float / COUNT(*) * 100 
+	AS delivery_success_rate
+FROM deliveries
+GROUP BY rider_id
+ORDER BY delivery_success_rate DESC;
 ```
 
 ---
@@ -99,7 +114,16 @@ Calculates the delivery success percentage for each rider.
 Finds average order value of customers who have placed at least 3 orders.
 
 ```sql
--- Filters customers with COUNT >= 3
+SELECT 
+    o.customer_id,
+    c.customer_name,
+    COUNT(*) AS total_orders,
+    ROUND(AVG(o.total_amount)::numeric, 2) AS avg_order_value
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+GROUP BY o.customer_id, c.customer_name
+HAVING COUNT(*) >= 3
+ORDER BY avg_order_value DESC;
 ```
 
 ---
@@ -109,7 +133,17 @@ Finds average order value of customers who have placed at least 3 orders.
 Lists orders that were not delivered, along with the associated rider and customer details.
 
 ```sql
--- Filters delivery_status = 'not delivered'
+SELECT 
+    o.order_id,
+    c.customer_name,
+    o.order_item,
+    d.delivery_status,
+    r.rider_name
+FROM orders o
+JOIN deliveries d ON o.order_id = d.order_id
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN riders r ON d.rider_id = r.rider_id
+WHERE d.delivery_status = 'not delivered';
 ```
 
 ---
@@ -119,7 +153,15 @@ Lists orders that were not delivered, along with the associated rider and custom
 Ranks all restaurants both overall and within each city based on total revenue generated.
 
 ```sql
--- Uses RANK() OVER for overall and partitioned city-wise ranking
+SELECT 
+    r.restaurant_name,
+    r.city,
+    SUM(o.total_amount) AS total_revenue,
+    RANK() OVER (ORDER BY SUM(o.total_amount) DESC) AS overall_rank,
+    RANK() OVER (PARTITION BY r.city ORDER BY SUM(o.total_amount) DESC) AS city_rank
+FROM orders o
+JOIN restraunts r ON o.restaurant_id = r.restaurant_id
+GROUP BY r.restaurant_name, r.city;
 ```
 
 ---
@@ -129,7 +171,21 @@ Ranks all restaurants both overall and within each city based on total revenue g
 Extracts the #1 revenue-generating restaurant per city.
 
 ```sql
--- Uses ROW_NUMBER() PARTITION BY city and filters city_rank = 1
+SELECT 
+    restaurant_name,
+    city,
+    total_revenue
+FROM (
+    SELECT 
+        r.restaurant_name,
+        r.city,
+        SUM(o.total_amount::int) AS total_revenue,
+        ROW_NUMBER() OVER (PARTITION BY r.city ORDER BY SUM(o.total_amount) DESC) AS city_rank
+    FROM orders o
+    JOIN restraunts r ON o.restaurant_id = r.restaurant_id
+    GROUP BY r.restaurant_name, r.city
+) ranked
+WHERE city_rank = 1;
 ```
 
 ---
@@ -139,7 +195,19 @@ Extracts the #1 revenue-generating restaurant per city.
 Identifies customers who placed orders in 2023 and 2024 but did **not** place any orders in 2025, including their last order date.
 
 ```sql
--- Filters customers who did not appear in 2025 order data
+SELECT 
+    c.customer_id,
+    c.customer_name,
+    MAX(o.order_date) AS last_order_date
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+WHERE EXTRACT(YEAR FROM o.order_date) IN (2023, 2024)
+  AND c.customer_id NOT IN (
+        SELECT DISTINCT customer_id
+        FROM orders
+        WHERE EXTRACT(YEAR FROM order_date) = 2025
+  )
+GROUP BY c.customer_id, c.customer_name;
 ```
 
 ---
